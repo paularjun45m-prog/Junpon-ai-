@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="bn" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  
+  <!-- Primary Meta Tags & SEO -->
+  <title>Junpon AI — Your All-in-One Intelligent AI Companion</title>
+  <meta name="title" content="Junpon AI — Your All-in-One Intelligent AI Companion" />
+  <meta name="description" content="Junpon AI: অভিজ্ঞ কৃত্রিম বুদ্ধিমত্তা সম্পন্ন অল-ইন-ওয়ান সহকারী। লাইভ ভয়েস কমিউনিকেশন, চ্যাট, এবং হাই-কোয়ালিটি ইমেজ জেনারেশন স্টুডিও।" />
+  <meta name="keywords" content="Junpon AI, Voice AI, Bengali AI, Chat AI, Image Generator, AI Assistant" />
+  <meta name="author" content="Junpon AI" />
+  <meta name="theme-color" content="#20C997" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://junpon.ai/" />
+  <meta property="og:title" content="Junpon AI — All-in-One Intelligent AI Companion" />
+  <meta property="og:description" content="Junpon AI: অভিজ্ঞতা নিন লাইভ ভয়েস টু ভয়েস কল, চ্যাট এবং কৃত্রিম বুদ্ধিমত্তার তৈরি আর্টওয়ার্ক।" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:title" content="Junpon AI — Intelligent AI Companion" />
+  <meta property="twitter:description" content="ভয়েস কল, স্মার্ট চ্যাট এবং ইমেজ স্টুডিও এক প্ল্যাটফর্মে।" />
+  <meta property="twitter:image" content="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2310b981'/%3E%3Cstop offset='100%25' stop-color='%2306b6d4'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpolygon points='50,8 90,30 90,70 50,92 10,70 10,30' fill='url(%23g)'/%3E%3Cpolygon points='50,22 78,38 78,62 50,78 22,62 22,38' fill='%2309090b'/%3E%3Ccircle cx='50' cy='50' r='10' fill='url(%23g)'/%3E%3C/svg%3E" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              400: '#34d399',
+              500: '#10b981',
+              600: '#059669',
+              glow: 'rgba(16, 185, 129, 0.4)'
+            }
+          },
+          animation: {
+            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'spin-slow': 'spin 8s linear infinite',
+            'float': 'float 3s ease-in-out infinite',
+            'ripple': 'ripple 2s ease-out infinite'
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-6px)' }
+            },
+            ripple: {
+              '0%': { transform: 'scale(0.8)', opacity: '0.8' },
+              '100%': { transform: 'scale(2.2)', opacity: '0' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    /* Custom Scrollbars */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(156, 163, 175, 0.3);
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(156, 163, 175, 0.5);
+    }
+    .gradient-border {
+      border: 1px solid transparent;
+      background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02)) padding-box,
+                  linear-gradient(135deg, rgba(16, 185, 129, 0.4), rgba(6, 182, 212, 0.1)) border-box;
+    }
+  </style>
+</head>
+
+<body class="bg-neutral-950 text-neutral-100 min-h-screen flex flex-col font-sans transition-colors duration-200 antialiased selection:bg-emerald-500 selection:text-white">
+
+  <!-- ================= TOP NAVIGATION ================= -->
+  <header class="sticky top-0 z-40 w-full backdrop-blur-xl bg-neutral-950/80 border-b border-neutral-800/80 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#home" onclick="showTab('home')" class="flex items-center gap-3 group">
+        <div class="relative w-9 h-9 flex items-center justify-center">
+          <div class="absolute inset-0 bg-emerald-500/20 blur-md rounded-lg group-hover:bg-emerald-500/40 transition-all"></div>
+          <svg class="relative w-8 h-8 transition-transform group-hover:scale-105" viewBox="0 0 100 100">
+            <defs>
+              <linearGradient id="navLogoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#10b981" />
+                <stop offset="50%" stop-color="#06b6d4" />
+                <stop offset="100%" stop-color="#3b82f6" />
+              </linearGradient>
+            </defs>
+            <polygon points="50,8 90,30 90,70 50,92 10,70 10,30" fill="url(#navLogoGrad)" />
+            <polygon points="50,22 78,38 78,62 50,78 22,62 22,38" fill="#09090b" />
+            <circle cx="50" cy="50" r="10" fill="url(#navLogoGrad)" />
+          </svg>
+        </div>
+        <div class="flex flex-col">
+          <span class="text-lg font-bold tracking-tight bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">Junpon AI</span>
+          <span class="text-[9px] text-neutral-400 -mt-1 font-mono tracking-wider">ALL-IN-ONE STUDIO</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="hidden md:flex items-center gap-1 font-medium text-sm text-neutral-300">
+        <button onclick="showTab('home')" id="nav-btn-home" class="px-3.5 py-1.5 rounded-lg hover:text-white hover:bg-neutral-900 transition-colors text-emerald-400 font-semibold">হোম</button>
+        <button onclick="showTab('chat')" id="nav-btn-chat" class="px-3.5 py-1.5 rounded-lg hover:text-white hover:bg-neutral-900 transition-colors">চ্যাট</button>
+        <button onclick="showTab('images')" id="nav-btn-images" class="px-3.5 py-1.5 rounded-lg hover:text-white hover:bg-neutral-900 transition-colors">ইমেজ স্টুডিও</button>
+        <button onclick="openVoiceModal()" class="px-3.5 py-1.5 rounded-lg flex items-center gap-1.5 text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 hover:bg-emerald-500/20 transition-all font-semibold">
+          <i data-lucide="mic" class="w-4 h-4 animate-pulse"></i>
+          <span>ভয়েস কল</span>
+        </button>
+        <button onclick="showTab('pricing')" id="nav-btn-pricing" class="px-3.5 py-1.5 rounded-lg hover:text-white hover:bg-neutral-900 transition-colors">প্রো মেম্বারশিপ</button>
+      </nav>
+
+      <!-- Right Action Controls -->
+      <div class="flex items-center gap-2.5">
+        
+        <!-- Live Voice Call Quick Action -->
+        <button onclick="openVoiceModal()" title="Start Voice Call" class="flex items-center gap-2 px-3 py-1.5 text-xs font-semibold rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 text-white shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40 hover:scale-105 active:scale-95 transition-all">
+          <i data-lucide="phone-call" class="w-3.5 h-3.5"></i>
+          <span class="hidden sm:inline">লাইভ ভয়েস</span>
+        </button>
+
+        <!-- Dark/Light Theme Toggle -->
+        <button onclick="toggleTheme()" class="p-2 rounded-lg text-neutral-400 hover:text-white hover:bg-neutral-800/80 transition-colors" title="Toggle Theme" aria-label="Toggle Theme">
+          <i id="theme-icon" data-lucide="sun" class="w-4 h-4"></i>
+        </button>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-lg text-neutral-400 hover:text-white hover:bg-neutral-800/80 transition-colors" aria-label="Open Menu">
+          <i id="mobile-menu-icon" data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobile-menu" class="hidden md:hidden border-b border-neutral-800 bg-neutral-950 px-4 pt-2 pb-4 space-y-1 transition-all">
+      <button onclick="showTab('home'); toggleMobileMenu();" class="w-full text-left px-3 py-2 rounded-lg text-neutral-200 hover:bg-neutral-900 font-medium">হোম</button>
+      <button onclick="showTab('chat'); toggleMobileMenu();" class="w-full text-left px-3 py-2 rounded-lg text-neutral-200 hover:bg-neutral-900 font-medium">চ্যাট স্টুডিও</button>
+      <button onclick="showTab('images'); toggleMobileMenu();" class="w-full text-left px-3 py-2 rounded-lg text-neutral-200 hover:bg-neutral-900 font-medium">ইমেজ স্টুডিও</button>
+      <button onclick="openVoiceModal(); toggleMobileMenu();" class="w-full text-left px-3 py-2 rounded-lg text-emerald-400 bg-emerald-500/10 font-medium flex items-center gap-2">
+        <i data-lucide="mic" class="w-4 h-4"></i>
+        ভয়েস টু ভয়েস কল (Live AI)
+      </button>
+      <button onclick="showTab('pricing'); toggleMobileMenu();" class="w-full text-left px-3 py-2 rounded-lg text-neutral-200 hover:bg-neutral-900 font-medium">প্রো প্ল্যান</button>
+    </div>
+  </header>
+
+  <!-- ================= MAIN CONTENT AREA ================= -->
+  <main class="flex-1 flex flex-col">
+
+    <!-- 1. HOME VIEW SECTION -->
+    <section id="view-home" class="w-full flex flex-col items-center">
+      
+      <!-- Hero Section -->
+      <div class="relative w-full max-w-5xl mx-auto px-4 pt-12 pb-16 text-center flex flex-col items-center">
+        
+        <!-- Background Ambient Glow -->
+        <div class="absolute top-1/4 -z-10 w-96 h-96 bg-emerald-500/15 rounded-full blur-3xl pointer-events-none"></div>
+
+        <!-- Announcement Pill -->
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-300 text-xs font-medium mb-6 animate-float">
+          <i data-lucide="sparkles" class="w-3.5 h-3.5 text-emerald-400"></i>
+          <span>নতুন: ভয়েস টু ভয়েস AI কমিউনিকেশন মোড যোগ করা হয়েছে!</span>
+        </div>
+
+        <!-- Hero Junpon Crystal 3D Logo -->
+        <div class="relative w-24 h-24 mb-6 group cursor-pointer" onclick="openVoiceModal()">
+          <div class="absolute inset-0 bg-emerald-500/30 blur-xl rounded-full group-hover:bg-emerald-500/50 transition-all"></div>
+          <svg class="relative w-full h-full drop-shadow-2xl transition-transform duration-300 group-hover:scale-110" viewBox="0 0 100 100">
+            <defs>
+              <linearGradient id="heroLogoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#34d399" />
+                <stop offset="50%" stop-color="#06b6d4" />
+                <stop offset="100%" stop-color="#3b82f6" />
+              </linearGradient>
+            </defs>
+            <polygon points="50,6 94,29 94,71 50,94 6,71 6,29" fill="url(#heroLogoGrad)" />
+            <polygon points="50,20 80,36 80,64 50,80 20,64 20,36" fill="#09090b" />
+            <polygon points="50,30 68,41 68,59 50,70 32,59 32,41" fill="url(#heroLogoGrad)" opacity="0.6" />
+            <circle cx="50" cy="50" r="10" fill="#ffffff" />
+          </svg>
+        </div>
+
+        <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white max-w-3xl leading-tight">
+          যেকোনো জিজ্ঞাসা করুন, তৈরি করুন <span class="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">Junpon AI</span>-এর সাথে
+        </h1>
+        <p class="mt-4 text-base sm:text-lg text-neutral-400 max-w-2xl leading-relaxed">
+          বুদ্ধিমত্তাসম্পন্ন প্রাকৃতিক চ্যাট, আল্ট্রা-রিয়েলিস্টিক ফটো জেনারেশন এবং হ্যান্ডস-ফ্রি বাংলা ভয়েস ইন্টারঅ্যাকশন এখন এক জায়গায়।
+        </p>
+
+        <!-- CTA Action Buttons -->
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+          <button onclick="showTab('chat')" class="flex items-center gap-2.5 px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-semibold shadow-lg shadow-emerald-500/25 hover:shadow-emerald-500/40 hover:scale-105 active:scale-95 transition-all">
+            <i data-lucide="message-square" class="w-5 h-5"></i>
+            <span>চ্যাট শুরু করুন</span>
+          </button>
+          
+          <button onclick="openVoiceModal()" class="flex items-center gap-2.5 px-6 py-3 rounded-xl bg-neutral-900 border border-neutral-800 hover:border-emerald-500/40 text-neutral-200 hover:text-white font-semibold hover:scale-105 active:scale-95 transition-all">
+            <i data-lucide="mic" class="w-5 h-5 text-emerald-400"></i>
+            <span>🎙️ লাইভ ভয়েস কল</span>
+          </button>
+        </div>
+
+        <!-- Quick Prompt Chips -->
+        <div class="mt-8 flex flex-wrap justify-center gap-2 max-w-3xl">
+          <button onclick="startChatWith('বাংলায় একটি সুন্দর প্রেমের কবিতা লিখে দাও')" class="text-xs px-3 py-1.5 rounded-full bg-neutral-900 border border-neutral-800 text-neutral-300 hover:border-emerald-500/40 hover:text-white transition-all">
+            ✍️ বাংলায় সুন্দর কবিতা
+          </button>
+          <button onclick="startChatWith('কীভাবে ফ্রিল্যান্সিং ক্যারিয়ার শুরু করব? বিস্তারিত গাইড দাও')" class="text-xs px-3 py-1.5 rounded-full bg-neutral-900 border border-neutral-800 text-neutral-300 hover:border-emerald-500/40 hover:text-white transition-all">
+            💼 ফ্রিল্যান্সিং গাইড
+          </button>
+          <button onclick="showTab('images')" class="text-xs px-3 py-1.5 rounded-full bg-neutral-900 border border-neutral-800 text-neutral-300 hover:border-emerald-500/40 hover:text-white transition-all">
+            🎨 নতুন আর্টওয়ার্ক তৈরি
+          </button>
+          <button onclick="startChatWith('JavaScript এবং TypeScript এর মধ্যে প্রধান পার্থক্যগুলো কী?')" class="text-xs px-3 py-1.5 rounded-full bg-neutral-900 border border-neutral-800 text-neutral-300 hover:border-emerald-500/40 hover:text-white transition-all">
+            💻 প্রোগ্রামিং সমাধান
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Feature Capabilities Grid -->
+      <div class="w-full max-w-6xl mx-auto px-4 pb-20">
+        <div class="text-center mb-10">
+          <h2 class="text-2xl sm:text-3xl font-bold text-white">শক্তিশালী AI টুলসেট</h2>
+          <p class="text-neutral-400 text-sm mt-1">সব ধরনের দৈনন্দিন ও প্রফেশনাল কাজের বিশ্বস্ত সহকারী</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          
+          <!-- Card 1: Live Voice Mode -->
+          <div onclick="openVoiceModal()" class="cursor-pointer gradient-border rounded-2xl p-6 bg-neutral-900/60 hover:bg-neutral-900 transition-all hover:-translate-y-1">
+            <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 mb-4">
+              <i data-lucide="mic" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2 flex items-center justify-between">
+              <span>লাইভ ভয়েস কল</span>
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 uppercase">Interactive</span>
+            </h3>
+            <p class="text-sm text-neutral-400 leading-relaxed">
+              Gemini Live ও ChatGPT Voice-এর আদলে ৩ডি ভিজ্যুয়ালাইজার সহ সরাসরি মুখে কথা বলুন এবং তাৎক্ষণিক ভয়েস উত্তর শুনুন।
+            </p>
+          </div>
+
+          <!-- Card 2: AI Chat -->
+          <div onclick="showTab('chat')" class="cursor-pointer gradient-border rounded-2xl p-6 bg-neutral-900/60 hover:bg-neutral-900 transition-all hover:-translate-y-1">
+            <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 mb-4">
+              <i data-lucide="bot" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">বুদ্ধিমান AI চ্যাট</h3>
+            <p class="text-sm text-neutral-400 leading-relaxed">
+              বাংলা ও ইংরেজি ভাষায় দ্রুত বিশ্লেষণ, রচনা, সামারি, স্ক্রিপ্ট ও কোডিং সমস্যার নিখুঁত সমাধান।
+            </p>
+          </div>
+
+          <!-- Card 3: Image Generation -->
+          <div onclick="showTab('images')" class="cursor-pointer gradient-border rounded-2xl p-6 bg-neutral-900/60 hover:bg-neutral-900 transition-all hover:-translate-y-1">
+            <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 mb-4">
+              <i data-lucide="image" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">ইমেজ স্টুডিও</h3>
+            <p class="text-sm text-neutral-400 leading-relaxed">
+              টেক্সট প্রম্পট লিখে যেকোনো ধরনের আর্টওয়ার্ক, ফটোরিয়েলিস্টিক ছবি ও পোর্ট্রেট ডিজাইন তৈরি করুন।
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+    <!-- 2. CHAT STUDIO VIEW SECTION -->
+    <section id="view-chat" class="hidden flex-1 w-full max-w-5xl mx-auto px-4 py-4 flex flex-col h-[calc(100vh-4rem)]">
+      
+      <!-- Chat Header -->
+      <div class="flex items-center justify-between pb-3 border-b border-neutral-800">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
+            <i data-lucide="sparkles" class="w-4 h-4"></i>
+          </div>
+          <div>
+            <h2 class="text-sm font-bold text-white">Junpon Assistant (Active)</h2>
+            <p class="text-[11px] text-emerald-400 flex items-center gap-1.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+              অনলাইন এবং উত্তরের জন্য প্রস্তুত
+            </p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <button onclick="clearChatMessages()" class="p-2 rounded-lg text-neutral-400 hover:text-rose-400 hover:bg-neutral-900 text-xs transition-colors" title="চ্যাট রিসেট করুন">
+            <i data-lucide="trash-2" class="w-4 h-4"></i>
+          </button>
+          <button onclick="openVoiceModal()" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 hover:bg-emerald-500/20 text-xs font-semibold transition-all">
+            <i data-lucide="mic" class="w-3.5 h-3.5"></i>
+            <span>ভয়েস মোড</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Messages Message Scroll Container -->
+      <div id="chat-messages" class="flex-1 overflow-y-auto py-4 space-y-4 pr-1">
+        <!-- Messages will be injected dynamically via JS -->
+      </div>
+
+      <!-- Chat Input Area -->
+      <div class="pt-2 border-t border-neutral-800">
+        <form onsubmit="handleSendChat(event)" class="relative flex items-center bg-neutral-900 border border-neutral-800 focus-within:border-emerald-500/50 rounded-2xl px-4 py-2 transition-all shadow-lg">
+          <input 
+            type="text" 
+            id="chat-input" 
+            placeholder="Junpon AI-কে যেকোনো কিছু জিজ্ঞাসা করুন..." 
+            class="w-full bg-transparent text-sm text-white placeholder-neutral-500 focus:outline-none pr-24"
+            autocomplete="off"
+          />
+          
+          <div class="absolute right-2 flex items-center gap-1.5">
+            <button type="button" onclick="openVoiceModal()" class="p-2 rounded-xl text-neutral-400 hover:text-emerald-400 hover:bg-neutral-800 transition-colors" title="ভয়েস কল শুরু করুন">
+              <i data-lucide="mic" class="w-4 h-4"></i>
+            </button>
+            <button type="submit" class="p-2 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white shadow-md shadow-emerald-500/20 transition-all">
+              <i data-lucide="send" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </form>
+        <p class="text-[10px] text-center text-neutral-500 mt-2 font-mono">Junpon AI ভুল তথ্য দিতে পারে। গুরুত্বপূর্ণ সিদ্ধান্ত নেওয়ার আগে যাচাই করুন।</p>
+      </div>
+
+    </section>
+
+    <!-- 3. IMAGE STUDIO VIEW SECTION -->
+    <section id="view-images" class="hidden flex-1 w-full max-w-6xl mx-auto px-4 py-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-8">
+        <h2 class="text-3xl font-extrabold text-white">AI ইমেজ জেনারেশন স্টুডিও</h2>
+        <p class="text-sm text-neutral-400 mt-1">আপনার মনের ভাবনাকে নিমেষেই ভিজ্যুয়াল আর্টওয়ার্কে রূপান্তর করুন।</p>
+      </div>
+
+      <!-- Generation Form Card -->
+      <div class="bg-neutral-900/90 border border-neutral-800 rounded-2xl p-6 shadow-xl max-w-3xl mx-auto mb-10">
+        <div class="space-y-4">
+          <div>
+            <label class="block text-xs font-semibold text-neutral-300 mb-1.5">প্রম্পট লিখুন (Prompt)</label>
+            <textarea 
+              id="image-prompt" 
+              rows="3" 
+              placeholder="যেমন: A futuristic cybernetic tiger with glowing emerald eyes in a neon jungle, 8k resolution, cinematic lighting..." 
+              class="w-full bg-neutral-950 border border-neutral-800 focus:border-emerald-500/50 rounded-xl p-3 text-sm text-white placeholder-neutral-500 focus:outline-none transition-all"
+            ></textarea>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-semibold text-neutral-300 mb-1.5">আর্ট স্টাইল</label>
+              <select id="image-style" class="w-full bg-neutral-950 border border-neutral-800 rounded-xl p-2.5 text-xs text-neutral-200 focus:outline-none">
+                <option value="photorealistic">Photorealistic (বাস্তবধর্মী)</option>
+                <option value="cyberpunk">Cyberpunk & Neon</option>
+                <option value="anime">Anime / Manga Art</option>
+                <option value="3d-render">3D Octane Render</option>
+                <option value="oil-painting">Classic Oil Painting</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-neutral-300 mb-1.5">এসপেক্ট রেশিও</label>
+              <select id="image-ratio" class="w-full bg-neutral-950 border border-neutral-800 rounded-xl p-2.5 text-xs text-neutral-200 focus:outline-none">
+                <option value="1:1">1:1 Square (স্কয়ার)</option>
+                <option value="16:9">16:9 Landscape (ল্যান্ডস্কেপ)</option>
+                <option value="9:16">9:16 Portrait (মোবাইল স্ক্রিন)</option>
+              </select>
+            </div>
+          </div>
+
+          <button onclick="handleGenerateImage()" id="btn-gen-image" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 hover:from-emerald-600 hover:to-cyan-600 text-white font-bold text-sm shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/30 transition-all flex items-center justify-center gap-2">
+            <i data-lucide="sparkles" class="w-4 h-4"></i>
+            <span id="gen-btn-text">ছবি তৈরি করুন</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Generated Gallery Section -->
+      <div>
+        <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+          <i data-lucide="gallery-vertical" class="w-4 h-4 text-emerald-400"></i>
+          <span>তৈরিকৃত গ্যালারি (Recent Creations)</span>
+        </h3>
+        
+        <div id="image-gallery" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          <!-- Gallery Items will be rendered here dynamically -->
+        </div>
+      </div>
+
+    </section>
+
+    <!-- 4. PRICING & PRO MEMBERSHIP VIEW -->
+    <section id="view-pricing" class="hidden flex-1 w-full max-w-5xl mx-auto px-4 py-12">
+      <div class="text-center max-w-xl mx-auto mb-12">
+        <h2 class="text-3xl font-extrabold text-white">Junpon Pro মেম্বারশিপ</h2>
+        <p class="text-neutral-400 text-sm mt-2">সীমাহীন ভয়েস মোড, আল্ট্রা-ফাস্ট রেসপন্স ও হাই-রেজোলিউশন ইমেজ জেনারেশন আনলক করুন।</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        
+        <!-- Free Plan -->
+        <div class="rounded-2xl border border-neutral-800 bg-neutral-900/50 p-8 flex flex-col justify-between">
+          <div>
+            <span class="text-xs font-mono uppercase tracking-wider text-neutral-400">বেসিক প্ল্যান</span>
+            <div class="mt-4 flex items-baseline gap-2">
+              <span class="text-4xl font-extrabold text-white">৳০</span>
+              <span class="text-neutral-400 text-sm">/ চিরদিনের জন্য ফ্রি</span>
+            </div>
+            <p class="text-neutral-400 text-sm mt-3">দৈনন্দিন চ্যাট ও বেসিক প্রশ্নের জন্য আদর্শ।</p>
+            
+            <ul class="mt-6 space-y-3 text-sm text-neutral-300">
+              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> আনলিমিটেড স্ট্যান্ডার্ড টেক্সট চ্যাট</li>
+              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> লাইভ ভয়েস ট্রায়াল (প্রতিদিন ৫ মিনিট)</li>
+              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> প্রতিদিন ৩টি স্ট্যান্ডার্ড ইমেজ জেনারেশন</li>
+            </ul>
+          </div>
+          <button class="mt-8 w-full py-3 rounded-xl border border-neutral-700 bg-neutral-800 text-neutral-300 font-semibold cursor-default">
+            বর্তমান সক্রিয় প্ল্যান
+          </button>
+        </div>
+
+        <!-- Pro Plan -->
+        <div class="rounded-2xl border-2 border-emerald-500 bg-neutral-900 p-8 flex flex-col justify-between shadow-2xl shadow-emerald-500/10 relative">
+          <div class="absolute -top-3.5 right-6 px-3 py-1 rounded-full bg-emerald-500 text-neutral-950 font-bold text-xs uppercase tracking-wide">
+            জনপ্রিয়
+          </div>
+          <div>
+            <span class="text-xs font-mono uppercase tracking-wider text-emerald-400">প্রো মেম্বারশিপ</span>
+            <div class="mt-4 flex items-baseline gap-2">
+              <span class="text-4xl font-extrabold text-white">৳২৯৯</span>
+              <span class="text-neutral-400 text-sm">/ মাস</span>
+            </div>
+            <p class="text-neutral-400 text-sm mt-3">পেশাদার ব্যবহারকারী এবং কনটেন্ট ক্রিয়েটরদের জন্য সম্পূর্ণ সুবিধা।</p>
+            
+            <ul class="mt-6 space-y-3 text-sm text-neutral-200">
+              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> আনলিমিটেড ভয়েস টু ভয়েস কল (বাংলা ও ইংরেজি)</li>
+              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> সর্বোচ্চ অগ্রাধিকার সম্পন্ন আল্ট্রা-ফাস্ট প্রসেসিং</li>
+              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> সীমাহীন আল্ট্রা এইচডি ৪K ইমেজ জেনারেশন</li>
+              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> এক্সক্লুসিভ কোডিং ও লং-ডকুমেন্ট সামারি টুল</li>
+            </ul>
+          </div>
+          
+          <button onclick="alert('Junpon Pro আপগ্রেড শীঘ্রই বিকাশ/নগদ পেমেন্ট গেটওয়েতে চালু হচ্ছে!')" class="mt-8 w-full py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white font-bold shadow-lg shadow-emerald-500/25 transition-all">
+            প্রো আপগ্রেড করুন
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= IMMERSIVE VOICE CALL MODAL (ALL AI STYLE) ================= -->
+  <div id="voice-modal" class="fixed inset-0 z-50 hidden bg-neutral-950/95 backdrop-blur-2xl flex flex-col justify-between p-6 sm:p-10 transition-opacity">
+    
+    <!-- Top Modal Header -->
+    <div class="flex items-center justify-between w-full max-w-4xl mx-auto">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-full bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+          <i data-lucide="mic" class="w-4 h-4"></i>
+        </div>
+        <div>
+          <h3 class="text-sm font-bold text-white">Junpon Live Voice</h3>
+          <p class="text-[11px] text-emerald-400">Hands-Free Real-time Call</p>
+        </div>
+      </div>
+
+      <!-- Language Selector & Close -->
+      <div class="flex items-center gap-3">
+        <button onclick="toggleVoiceLang()" id="voice-lang-btn" class="px-3 py-1 rounded-full text-xs font-mono border border-neutral-700 bg-neutral-900 text-neutral-300 hover:text-white">
+          বাংলা (BD)
+        </button>
+        <button onclick="closeVoiceModal()" class="p-2 rounded-full text-neutral-400 hover:text-white hover:bg-neutral-800 transition-colors" aria-label="Close Voice Call">
+          <i data-lucide="x" class="w-6 h-6"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Center 3D Pulsing Audio Orb Visualizer -->
+    <div class="flex-1 flex flex-col items-center justify-center my-8 text-center">
+      
+      <div class="relative w-48 h-48 sm:w-60 sm:h-60 flex items-center justify-center">
+        <!-- Outer Ripples -->
+        <div id="orb-ripple-1" class="absolute inset-0 rounded-full border border-emerald-500/30 animate-ping"></div>
+        <div id="orb-ripple-2" class="absolute -inset-6 rounded-full border border-teal-500/20 animate-pulse"></div>
+
+        <!-- Central Interactive Glow Core -->
+        <div id="orb-core" class="relative w-36 h-36 sm:w-44 sm:h-44 rounded-full bg-gradient-to-tr from-emerald-500 via-teal-400 to-cyan-500 shadow-2xl shadow-emerald-500/50 flex items-center justify-center transition-all duration-300">
+          <svg class="w-20 h-20 text-neutral-950 animate-spin-slow" viewBox="0 0 100 100">
+            <polygon points="50,8 90,30 90,70 50,92 10,70 10,30" fill="currentColor" opacity="0.85" />
+            <circle cx="50" cy="50" r="12" fill="#ffffff" />
+          </svg>
+        </div>
+      </div>
+
+      <!-- Voice State Text -->
+      <div class="mt-8">
+        <p id="voice-status-text" class="text-lg sm:text-xl font-bold text-white tracking-wide">
+          শুনছি... কথা বলুন
+        </p>
+        <p id="voice-sub-text" class="text-xs sm:text-sm text-neutral-400 mt-1">
+          (Speaking in Bengali / যেকোনো প্রশ্ন করুন)
+        </p>
+      </div>
+
+      <!-- Real-time live transcript bubble -->
+      <div id="voice-transcript-box" class="mt-6 max-w-lg px-4 py-2.5 rounded-2xl bg-neutral-900/80 border border-neutral-800 text-xs sm:text-sm text-neutral-300 min-h-[44px] flex items-center justify-center">
+        <span id="voice-transcript-text">মাইক্রোফোনে কথা বললে এখানে দেখা যাবে...</span>
+      </div>
+
+    </div>
+
+    <!-- Bottom Controls -->
+    <div class="w-full max-w-md mx-auto flex items-center justify-center gap-6">
+      
+      <!-- Mic Mute Toggle -->
+      <button onclick="toggleVoiceMute()" id="btn-voice-mute" class="p-4 rounded-full bg-neutral-900 border border-neutral-800 text-neutral-300 hover:text-white hover:border-neutral-700 transition-all" title="Mute/Unmute Mic">
+        <i id="voice-mute-icon" data-lucide="mic" class="w-6 h-6"></i>
+      </button>
+
+      <!-- End Call Button -->
+      <button onclick="closeVoiceModal()" class="p-4 rounded-full bg-rose-600 hover:bg-rose-700 text-white shadow-xl shadow-rose-600/30 hover:scale-110 active:scale-95 transition-all" title="End Call">
+        <i data-lucide="phone-off" class="w-6 h-6"></i>
+      </button>
+
+      <!-- Switch to Text Chat -->
+      <button onclick="closeVoiceModal(); showTab('chat');" class="p-4 rounded-full bg-neutral-900 border border-neutral-800 text-neutral-300 hover:text-white hover:border-neutral-700 transition-all" title="Switch to Text Chat">
+        <i data-lucide="message-square" class="w-6 h-6"></i>
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="border-t border-neutral-900 bg-neutral-950 py-8 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-500">
+      <div class="flex items-center gap-2">
+        <span class="font-bold text-neutral-400">Junpon AI</span>
+        <span>&copy; <span id="year"></span> সর্বস্বত্ব সংরক্ষিত। GitHub Pages ডেপ্লয়মেন্টের জন্য প্রস্তুত।</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="#home" onclick="showTab('home')" class="hover:text-neutral-300 transition-colors">হোম</a>
+        <a href="#chat" onclick="showTab('chat')" class="hover:text-neutral-300 transition-colors">চ্যাট</a>
+        <a href="#images" onclick="showTab('images')" class="hover:text-neutral-300 transition-colors">ইমেজ স্টুডিও</a>
+        <a href="#pricing" onclick="showTab('pricing')" class="hover:text-neutral-300 transition-colors">প্রাইসিং</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= JAVASCRIPT APPLICATION LOGIC ================= -->
+  <script>
+    // 1. Dynamic Copyright Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // 2. State Management
+    let currentTab = 'home';
+    let isDark = true;
+    let voiceLanguage = 'bn-BD'; // 'bn-BD' or 'en-US'
+    let isVoiceMuted = false;
+    let recognition = null;
+    let chatMessages = [
+      {
+        id: 'msg_welcome',
+        role: 'assistant',
+        text: 'নমস্কার! আমি Junpon AI — আপনার পার্সোনাল কৃত্রিম বুদ্ধিমত্তা সহকারী। যেকোনো তথ্য, কবিতা, কোডিং সমস্যা বা পরামর্শের জন্য আমায় নির্দ্বিধায় জিজ্ঞাসা করতে পারেন। এছাড়া উপরে 🎙️ ভয়েস কল বাটনে ট্যাপ করে সরাসরি মুখে কথা বলতে পারেন!',
+        time: 'এখন'
+      }
+    ];
+
+    let generatedImages = [
+      {
+        id: 'img_1',
+        prompt: 'Futuristic Cyberpunk Tiger in vibrant neon city with emerald crystals',
+        url: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop&q=80',
+        style: 'Cyberpunk'
+      },
+      {
+        id: 'img_2',
+        prompt: 'Ultra-detailed Bengal royal palace surrounded by misty rivers at sunset',
+        url: 'https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?w=800&auto=format&fit=crop&q=80',
+        style: 'Photorealistic'
+      },
+      {
+        id: 'img_3',
+        prompt: 'Anime style young sorceress wielding glowing blue lightning',
+        url: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?w=800&auto=format&fit=crop&q=80',
+        style: 'Anime'
+      }
+    ];
+
+    // 3. Tab Navigation Controller
+    function showTab(tabId) {
+      currentTab = tabId;
+      const views = ['home', 'chat', 'images', 'pricing'];
+      views.forEach(v => {
+        const el = document.getElementById(`view-${v}`);
+        const navBtn = document.getElementById(`nav-btn-${v}`);
+        if (el) {
+          if (v === tabId) {
+            el.classList.remove('hidden');
+          } else {
+            el.classList.add('hidden');
+          }
+        }
+        if (navBtn) {
+          if (v === tabId) {
+            navBtn.classList.add('text-emerald-400', 'font-semibold');
+          } else {
+            navBtn.classList.remove('text-emerald-400', 'font-semibold');
+          }
+        }
+      });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (tabId === 'chat') {
+        renderChatMessages();
+      } else if (tabId === 'images') {
+        renderGallery();
+      }
+    }
+
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    }
+
+    // 4. Dark / Light Theme Switching
+    function toggleTheme() {
+      isDark = !isDark;
+      if (isDark) {
+        document.documentElement.classList.add('dark');
+        document.body.classList.remove('bg-neutral-50', 'text-neutral-900');
+        document.body.classList.add('bg-neutral-950', 'text-neutral-100');
+      } else {
+        document.documentElement.classList.remove('dark');
+        document.body.classList.remove('bg-neutral-950', 'text-neutral-100');
+        document.body.classList.add('bg-neutral-50', 'text-neutral-900');
+      }
+      lucide.createIcons();
+    }
+
+    // 5. Chat Interaction Controller
+    function renderChatMessages() {
+      const container = document.getElementById('chat-messages');
+      if (!container) return;
+      container.innerHTML = chatMessages.map(msg => {
+        const isUser = msg.role === 'user';
+        return `
+          <div class="flex items-start gap-3 ${isUser ? 'flex-row-reverse' : ''}">
+            <div class="w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center text-xs font-bold ${isUser ? 'bg-cyan-600 text-white' : 'bg-emerald-600 text-white'}">
+              ${isUser ? 'You' : 'AI'}
+            </div>
+            <div class="max-w-[80%] rounded-2xl px-4 py-3 text-sm leading-relaxed ${isUser ? 'bg-emerald-600 text-white rounded-tr-none' : 'bg-neutral-900 border border-neutral-800 text-neutral-200 rounded-tl-none'} shadow-sm">
+              <p class="whitespace-pre-wrap">${escapeHtml(msg.text)}</p>
+              <div class="flex items-center justify-between gap-4 mt-1.5 pt-1 border-t border-white/10 text-[10px] text-neutral-400">
+                <span>${msg.time}</span>
+                ${!isUser ? `<button onclick="speakResponse('${escapeForSpeech(msg.text)}')" class="hover:text-emerald-400 transition-colors" title="ভয়েসে শুনুন">🔊 শুনুন</button>` : ''}
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+      container.scrollTop = container.scrollHeight;
+      lucide.createIcons();
+    }
+
+    function handleSendChat(e) {
+      if (e) e.preventDefault();
+      const input = document.getElementById('chat-input');
+      const text = input.value.trim();
+      if (!text) return;
+
+      const userTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      chatMessages.push({
+        id: 'msg_' + Date.now(),
+        role: 'user',
+        text: text,
+        time: userTime
+      });
+      input.value = '';
+      renderChatMessages();
+
+      // Simulated Intelligent AI Assistant Response
+      setTimeout(() => {
+        const aiReply = generateAiResponse(text);
+        chatMessages.push({
+          id: 'msg_' + (Date.now() + 1),
+          role: 'assistant',
+          text: aiReply,
+          time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+        });
+        renderChatMessages();
+      }, 700);
+    }
+
+    function startChatWith(promptText) {
+      showTab('chat');
+      const input = document.getElementById('chat-input');
+      input.value = promptText;
+      handleSendChat();
+    }
+
+    function clearChatMessages() {
+      if (confirm('আপনি কি সমস্ত চ্যাট হিস্ট্রি রিসেট করতে চান?')) {
+        chatMessages = [{
+          id: 'msg_reset',
+          role: 'assistant',
+          text: 'চ্যাট ক্লিয়ার করা হয়েছে। নতুন কিছু বলুন বা প্রশ্ন করুন!',
+          time: 'এখন'
+        }];
+        renderChatMessages();
+      }
+    }
+
+    function generateAiResponse(prompt) {
+      const lower = prompt.toLowerCase();
+      if (lower.includes('কেমন আছ') || lower.includes('how are you')) {
+        return 'ধন্যবাদ! আমি Junpon AI, খুব ভালো আছি। আপনি কেমন আছেন? আপনার আজকের কাজে আমি কীভাবে সহায়তা করতে পারি?';
+      }
+      if (lower.includes('কবিতা') || lower.includes('poem')) {
+        return 'নদী চলে আপন বেগে সাগরেরই পানে,\nহৃদয় মাঝে সুর যে বাজে ভালোবাসার গানে।\nআকাশ ছোঁয়া স্বপ্নগুলো ডানা মেলে ওড়ে,\nনতুন দিনের নতুন আলো ভরুক জীবন তোরে।\n\n— Junpon AI দ্বারা রচিত';
+      }
+      if (lower.includes('ফ্রিল্যান্সিং') || lower.includes('freelance')) {
+        return 'ফ্রিল্যান্সিং শুরু করার সহজ ধাপসমূহ:\n১. নির্দিষ্ট একটি দক্ষতা নির্বাচন করুন (যেমন: ওয়েব ডেভেলপমেন্ট, গ্রাফিক ডিজাইন, কনটেন্ট রাইটিং)।\n২. নিয়মিত অনুশীলন করে বাস্তবসম্মত কাজের পোর্টফোলিও তৈরি করুন।\n৩. Upwork, Fiverr বা LinkedIn-এ প্রফেশনাল প্রোফাইল খুলুন।\n৪. ক্লায়েন্ট কমিউনিকেশন ও ইংরেজি ভাষায় দক্ষতা বাড়ান।';
+      }
+      if (lower.includes('javascript') || lower.includes('typescript') || lower.includes('কোড') || lower.includes('code')) {
+        return 'TypeScript হলো JavaScript-এর একটি সুনির্দিষ্ট সুপারসেট (Superset), যা স্ট্যাটিক টাইপ চেকিং সুবিধা প্রদান করে। এর ফলে রানটাইম এরর কমে যায় এবং বড় কোডবেস সহজে মেইনটেইন করা সম্ভব হয়। ছোট প্রজেক্টে প্লেইন JS এবং প্রোডাকশন লেভেলের অ্যাপ্লিকেশনে TS ব্যবহার করা সেরা প্র্যাকটিস!';
+      }
+      return `আপনার প্রশ্নের ("${prompt}") প্রেক্ষিতে Junpon AI জানাচ্ছে: আমি আপনার কাজটি বুঝতে পেরেছি এবং এটি কার্যকরভাবে সমাধান করতে পুরোপুরি প্রস্তুত। কোনো অতিরিক্ত রেফারেন্স বা কোড চাইলে বলুন!`;
+    }
+
+    // 6. Speech Synthesis (Text to Voice)
+    function speakResponse(text) {
+      if (!('speechSynthesis' in window)) {
+        alert('আপনার ব্রাউজার টেক্সট-টু-স্পিচ সমর্থন করে না।');
+        return;
+      }
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = voiceLanguage;
+      utterance.rate = 1.0;
+      utterance.pitch = 1.0;
+      window.speechSynthesis.speak(utterance);
+    }
+
+    // 7. Interactive All-AI Live Voice Modal & Speech Recognition
+    function openVoiceModal() {
+      const modal = document.getElementById('voice-modal');
+      modal.classList.remove('hidden');
+      initSpeechRecognition();
+    }
+
+    function closeVoiceModal() {
+      const modal = document.getElementById('voice-modal');
+      modal.classList.add('hidden');
+      if (recognition) {
+        recognition.stop();
+        recognition = null;
+      }
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+      }
+    }
+
+    function toggleVoiceLang() {
+      voiceLanguage = voiceLanguage === 'bn-BD' ? 'en-US' : 'bn-BD';
+      document.getElementById('voice-lang-btn').textContent = voiceLanguage === 'bn-BD' ? 'বাংলা (BD)' : 'English (US)';
+      if (recognition) {
+        recognition.stop();
+        setTimeout(initSpeechRecognition, 300);
+      }
+    }
+
+    function toggleVoiceMute() {
+      isVoiceMuted = !isVoiceMuted;
+      const icon = document.getElementById('voice-mute-icon');
+      if (isVoiceMuted) {
+        icon.setAttribute('data-lucide', 'mic-off');
+        document.getElementById('voice-status-text').textContent = 'মাইক্রোফোন মিউট করা হয়েছে';
+        if (recognition) recognition.stop();
+      } else {
+        icon.setAttribute('data-lucide', 'mic');
+        document.getElementById('voice-status-text').textContent = 'শুনছি... কথা বলুন';
+        initSpeechRecognition();
+      }
+      lucide.createIcons();
+    }
+
+    function initSpeechRecognition() {
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (!SpeechRecognition) {
+        document.getElementById('voice-transcript-text').textContent = 'আপনার ব্রাউজারে ভয়েস রিকগনিশন সাপোর্টেড নয় (Chrome ব্রাউজার ব্যবহার করুন)।';
+        return;
+      }
+
+      recognition = new SpeechRecognition();
+      recognition.lang = voiceLanguage;
+      recognition.continuous = true;
+      recognition.interimResults = true;
+
+      recognition.onstart = () => {
+        document.getElementById('voice-status-text').textContent = 'শুনছি... কথা বলুন';
+        animateOrb(true);
+      };
+
+      recognition.onresult = (event) => {
+        let transcript = '';
+        for (let i = event.resultIndex; i < event.results.length; i++) {
+          transcript += event.results[i][0].transcript;
+        }
+        document.getElementById('voice-transcript-text').textContent = transcript;
+
+        // If user finished a sentence
+        if (event.results[event.results.length - 1].isFinal) {
+          handleVoiceInputCompleted(transcript);
+        }
+      };
+
+      recognition.onerror = () => {
+        document.getElementById('voice-status-text').textContent = 'কথা শুনতে অসুবিধা হচ্ছে, পুনরায় বলুন...';
+      };
+
+      recognition.onend = () => {
+        if (!isVoiceMuted && !document.getElementById('voice-modal').classList.contains('hidden')) {
+          try { recognition.start(); } catch (_) {}
+        }
+      };
+
+      try {
+        recognition.start();
+      } catch (err) {}
+    }
+
+    function handleVoiceInputCompleted(userSpeech) {
+      document.getElementById('voice-status-text').textContent = 'Junpon চিন্তা করছে...';
+      animateOrb(false);
+
+      setTimeout(() => {
+        const aiVoiceReply = generateAiResponse(userSpeech);
+        document.getElementById('voice-status-text').textContent = 'Junpon কথা বলছে...';
+        document.getElementById('voice-transcript-text').textContent = aiVoiceReply;
+        speakResponse(aiVoiceReply);
+      }, 600);
+    }
+
+    function animateOrb(active) {
+      const core = document.getElementById('orb-core');
+      if (active) {
+        core.classList.add('scale-110');
+      } else {
+        core.classList.remove('scale-110');
+      }
+    }
+
+    // 8. Image Studio Controller
+    function renderGallery() {
+      const gallery = document.getElementById('image-gallery');
+      if (!gallery) return;
+      gallery.innerHTML = generatedImages.map(img => `
+        <div class="group relative rounded-2xl overflow-hidden border border-neutral-800 bg-neutral-900 shadow-md">
+          <img src="${img.url}" alt="${escapeHtml(img.prompt)}" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+          <div class="absolute inset-0 bg-gradient-to-t from-neutral-950 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-4 flex flex-col justify-end">
+            <span class="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-emerald-500 text-neutral-950 font-bold w-max mb-1">${img.style}</span>
+            <p class="text-xs text-white font-medium line-clamp-2">${escapeHtml(img.prompt)}</p>
+            <div class="flex items-center gap-2 mt-2">
+              <a href="${img.url}" target="_blank" download class="px-2.5 py-1 rounded-lg bg-neutral-800/90 text-neutral-200 hover:text-white text-xs flex items-center gap-1">
+                ডাউনলোড
+              </a>
+            </div>
+          </div>
+        </div>
+      `).join('');
+      lucide.createIcons();
+    }
+
+    function handleGenerateImage() {
+      const promptInput = document.getElementById('image-prompt');
+      const prompt = promptInput.value.trim();
+      const styleSelect = document.getElementById('image-style');
+      const style = styleSelect.options[styleSelect.selectedIndex].text;
+
+      if (!prompt) {
+        alert('অনুগ্রহ করে একটি ইমেজ প্রম্পট লিখুন!');
+        return;
+      }
+
+      const btn = document.getElementById('btn-gen-image');
+      const btnText = document.getElementById('gen-btn-text');
+      btn.disabled = true;
+      btnText.textContent = 'তৈরি হচ্ছে... (Generating Image)';
+
+      setTimeout(() => {
+        // High quality curated unsplash seed image
+        const sampleUrls = [
+          'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop&q=80',
+          'https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?w=800&auto=format&fit=crop&q=80',
+          'https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=800&auto=format&fit=crop&q=80',
+          'https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=800&auto=format&fit=crop&q=80'
+        ];
+        const randomImg = sampleUrls[Math.floor(Math.random() * sampleUrls.length)];
+
+        generatedImages.unshift({
+          id: 'img_' + Date.now(),
+          prompt: prompt,
+          url: randomImg,
+          style: style
+        });
+
+        renderGallery();
+        promptInput.value = '';
+        btn.disabled = false;
+        btnText.textContent = 'ছবি তৈরি করুন';
+      }, 1200);
+    }
+
+    // Helper functions
+    function escapeHtml(str) {
+      return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+    }
+
+    function escapeForSpeech(str) {
+      return str.replace(/'/g, "\\'").replace(/\n/g, " ");
+    }
+
+    // Initialize Lucide Icons on First Load
+    document.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+      renderChatMessages();
+      renderGallery();
+    });
+  </script>
+</body>
+</html>
